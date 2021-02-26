@@ -34,12 +34,9 @@ interface Maintainance {
 }
 
 function App() {
-
-  //const options: Options = {'Access-Control-Allow-Origin': '*'}
   const [carIndex, setCarIndex] = useState(-1);
   const [selectedCar, setSelectedCar] = useState<Car|null>(null);
   const [vehicles, setVehicles] = useState<Car[]>([]);
-  //const { get, post, response, loading, error } = useFetch('http://localhost:3030', options, [])
 
   useEffect(() => {
     let car = (carIndex>=0)?vehicles[carIndex]:null;
@@ -49,7 +46,7 @@ function App() {
   const getCars = useCallback(async () => {
     Axios({
       method: "GET",
-      url: "http://localhost:3030/vehicles",
+      url: "http://34.227.93.110:3030/vehicles",
       headers: {
         "Content-Type": "application/json"
       }
@@ -64,7 +61,7 @@ function App() {
   const updateCars = (carInfo: Car) => {
     Axios({
         method: "PUT",
-        url: "http://localhost:3030/update_vehicle",
+        url: "http://34.227.93.110:3030/update_vehicle",
         headers: {
           "Content-Type": "application/json"
         },
